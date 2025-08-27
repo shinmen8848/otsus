@@ -1,0 +1,51 @@
+{
+  "name": "Tomoe & Nanami - Love Journey",
+  "short_name": "Tomoe & Nanami",
+  "description": "A romantic couple's website to track your love journey together",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ec4899",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["lifestyle", "social", "personalization"],
+  "shortcuts": [
+    {
+      "name": "Our Photos",
+      "short_name": "Photos",
+      "description": "View our photo memories",
+      "url": "/?section=memories",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Love Journal",
+      "short_name": "Journal",
+      "description": "Read our journal entries",
+      "url": "/?section=notes",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Interactive Games",
+      "short_name": "Games",
+      "description": "Play couple games together",
+      "url": "/?section=interactive",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "prefer_related_applications": false
+}
