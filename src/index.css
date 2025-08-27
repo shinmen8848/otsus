@@ -1,0 +1,1960 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Sophisticated Romantic Theme - Elegant and Dreamy */
+    --background: 320 35% 98%;
+    --foreground: 340 15% 8%;
+
+    --card: 320 40% 99%;
+    --card-foreground: 340 15% 8%;
+
+    --popover: 320 50% 100%;
+    --popover-foreground: 340 15% 8%;
+
+    /* Sophisticated Romantic Pink - Elegant and Soft */
+    --primary: 340 85% 68%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 340 85% 62%;
+    --primary-light: 340 85% 88%;
+    --primary-dark: 340 85% 52%;
+    --primary-muted: 340 60% 85%;
+
+    /* Warm Rose Gold Secondary - Luxurious */
+    --secondary: 25 80% 78%;
+    --secondary-foreground: 340 20% 15%;
+    --secondary-light: 25 80% 90%;
+    --secondary-dark: 25 80% 65%;
+    --secondary-muted: 25 60% 88%;
+
+    /* Sophisticated muted tones */
+    --muted: 320 30% 95%;
+    --muted-foreground: 340 15% 25%;
+
+    /* Elegant Lavender accent */
+    --accent: 285 55% 78%;
+    --accent-foreground: 340 15% 8%;
+    --accent-light: 285 55% 92%;
+    --accent-dark: 285 55% 62%;
+
+    /* Sophisticated Romantic Color Palette */
+    --romantic-rose: 345 80% 72%;
+    --romantic-blush: 15 75% 82%;
+    --romantic-lavender: 285 55% 78%;
+    --romantic-mint: 165 35% 82%;
+    --romantic-peach: 25 80% 78%;
+    --romantic-coral: 5 85% 75%;
+    --romantic-mauve: 320 45% 78%;
+    --romantic-champagne: 45 60% 88%;
+    --romantic-pearl: 30 25% 92%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 315 25% 85%;
+    --input: 315 25% 90%;
+    --ring: 340 85% 75%;
+
+    /* Enhanced Rose gold highlights */
+    --rose-gold: 15 60% 75%;
+    --rose-gold-dark: 15 70% 65%;
+    --rose-gold-light: 15 50% 85%;
+    
+    /* Sophisticated Romantic Gradients */
+    --gradient-3d-primary: linear-gradient(135deg, hsl(340 85% 88%) 0%, hsl(340 85% 68%) 50%, hsl(340 85% 52%) 100%);
+    --gradient-3d-secondary: linear-gradient(135deg, hsl(25 80% 90%) 0%, hsl(25 80% 78%) 50%, hsl(25 80% 65%) 100%);
+    --gradient-3d-background: linear-gradient(135deg, hsl(320 35% 98%) 0%, hsl(320 35% 96%) 30%, hsl(340 30% 97%) 70%, hsl(285 30% 96%) 100%);
+    --gradient-romantic-3d: linear-gradient(135deg, hsl(340 85% 78%) 0%, hsl(285 55% 78%) 30%, hsl(25 80% 78%) 70%, hsl(340 85% 78%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%);
+    --gradient-depth: linear-gradient(145deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 50%, rgba(0,0,0,0.05) 100%);
+
+    /* Elegant Romantic Gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(345 80% 72%) 0%, hsl(25 80% 78%) 50%, hsl(45 60% 88%) 100%);
+    --gradient-aurora: linear-gradient(135deg, hsl(285 55% 78%) 0%, hsl(340 85% 72%) 50%, hsl(15 75% 82%) 100%);
+    --gradient-garden: linear-gradient(135deg, hsl(165 35% 82%) 0%, hsl(285 55% 78%) 50%, hsl(340 85% 72%) 100%);
+    --gradient-dreamy: linear-gradient(135deg, hsl(285 55% 82%) 0%, hsl(340 85% 78%) 30%, hsl(25 80% 82%) 70%, hsl(285 55% 82%) 100%);
+    --gradient-pearl: linear-gradient(135deg, hsl(30 25% 92%) 0%, hsl(320 45% 88%) 50%, hsl(340 60% 85%) 100%);
+    --gradient-champagne: linear-gradient(135deg, hsl(45 60% 88%) 0%, hsl(25 80% 82%) 50%, hsl(5 85% 78%) 100%);
+    --gradient-mauve: linear-gradient(135deg, hsl(320 45% 85%) 0%, hsl(285 55% 82%) 50%, hsl(340 70% 78%) 100%);
+
+    /* Enhanced Romantic Color System - New Gradients */
+    --gradient-sunset-romance: linear-gradient(135deg, hsl(345 85% 75%) 0%, hsl(25 90% 70%) 50%, hsl(45 85% 80%) 100%);
+    --gradient-aurora-dreams: linear-gradient(135deg, hsl(285 70% 75%) 0%, hsl(320 80% 70%) 50%, hsl(340 85% 75%) 100%);
+    --gradient-garden-whispers: linear-gradient(135deg, hsl(165 50% 75%) 0%, hsl(200 60% 80%) 50%, hsl(285 55% 78%) 100%);
+    --gradient-pearl-elegance: linear-gradient(135deg, hsl(30 30% 95%) 0%, hsl(320 20% 92%) 50%, hsl(340 25% 90%) 100%);
+    --gradient-dreamy-mist: linear-gradient(135deg, hsl(285 65% 80%) 0%, hsl(340 80% 75%) 30%, hsl(25 75% 80%) 70%, hsl(285 65% 80%) 100%);
+    --gradient-romantic-blush: linear-gradient(135deg, hsl(345 80% 78%) 0%, hsl(15 75% 82%) 50%, hsl(320 70% 80%) 100%);
+    --gradient-champagne-glow: linear-gradient(135deg, hsl(45 70% 85%) 0%, hsl(25 85% 78%) 50%, hsl(5 80% 75%) 100%);
+    --gradient-mauve-mystique: linear-gradient(135deg, hsl(320 50% 82%) 0%, hsl(285 60% 78%) 50%, hsl(340 75% 75%) 100%);
+
+    /* Semantic Color Enhancements */
+    --color-love: hsl(345 85% 70%);
+    --color-joy: hsl(45 90% 75%);
+    --color-peace: hsl(200 60% 80%);
+    --color-passion: hsl(5 85% 65%);
+    --color-dream: hsl(285 70% 75%);
+    --color-nature: hsl(165 50% 70%);
+    --color-elegance: hsl(30 25% 90%);
+    
+    /* Sophisticated Romantic Shadows */
+    --shadow-3d-soft: 0 4px 30px -4px hsl(340 85% 68% / 0.25), 0 8px 35px -8px hsl(340 85% 68% / 0.15), 0 2px 8px -2px hsl(340 85% 68% / 0.1);
+    --shadow-3d-medium: 0 8px 40px -8px hsl(340 85% 68% / 0.3), 0 15px 50px -15px hsl(340 85% 68% / 0.2), 0 4px 12px -4px hsl(340 85% 68% / 0.15);
+    --shadow-3d-strong: 0 12px 50px -12px hsl(340 85% 68% / 0.4), 0 20px 60px -20px hsl(340 85% 68% / 0.25), 0 6px 16px -6px hsl(340 85% 68% / 0.2);
+    --shadow-glow-3d: 0 0 40px hsl(340 85% 68% / 0.6), 0 0 80px hsl(340 85% 68% / 0.3), 0 0 120px hsl(340 85% 68% / 0.15);
+    --shadow-inset: inset 0 2px 8px rgba(255,255,255,0.5), inset 0 -2px 8px rgba(0,0,0,0.08);
+
+    /* Elegant Romantic Shadows */
+    --shadow-romantic-glow: 0 0 45px hsl(345 80% 72% / 0.5), 0 0 85px hsl(345 80% 72% / 0.25), 0 0 125px hsl(345 80% 72% / 0.1);
+    --shadow-dreamy: 0 8px 45px -8px hsl(285 55% 78% / 0.35), 0 16px 55px -16px hsl(285 55% 78% / 0.2), 0 4px 15px -4px hsl(285 55% 78% / 0.15);
+    --shadow-sunset: 0 6px 35px -6px hsl(25 80% 78% / 0.35), 0 12px 45px -12px hsl(25 80% 78% / 0.2), 0 3px 12px -3px hsl(25 80% 78% / 0.15);
+    --shadow-pearl: 0 4px 25px -4px hsl(30 25% 85% / 0.4), 0 8px 35px -8px hsl(30 25% 85% / 0.25), 0 2px 10px -2px hsl(30 25% 85% / 0.2);
+    --shadow-mauve: 0 6px 30px -6px hsl(320 45% 78% / 0.3), 0 12px 40px -12px hsl(320 45% 78% / 0.18), 0 3px 10px -3px hsl(320 45% 78% / 0.12);
+
+    /* Enhanced Shadow System for New Gradients */
+    --shadow-sunset-romance: 0 8px 40px -8px hsl(345 85% 75% / 0.4), 0 16px 50px -16px hsl(345 85% 75% / 0.25), 0 4px 15px -4px hsl(345 85% 75% / 0.15);
+    --shadow-aurora-dreams: 0 10px 45px -10px hsl(285 70% 75% / 0.35), 0 18px 55px -18px hsl(285 70% 75% / 0.2), 0 5px 18px -5px hsl(285 70% 75% / 0.12);
+    --shadow-garden-whispers: 0 6px 35px -6px hsl(165 50% 75% / 0.3), 0 12px 45px -12px hsl(165 50% 75% / 0.18), 0 3px 12px -3px hsl(165 50% 75% / 0.1);
+    --shadow-pearl-elegance: 0 5px 30px -5px hsl(30 30% 85% / 0.35), 0 10px 40px -10px hsl(30 30% 85% / 0.2), 0 3px 12px -3px hsl(30 30% 85% / 0.15);
+    --shadow-dreamy-mist: 0 8px 42px -8px hsl(285 65% 80% / 0.32), 0 15px 52px -15px hsl(285 65% 80% / 0.18), 0 4px 14px -4px hsl(285 65% 80% / 0.12);
+    --shadow-romantic-blush: 0 7px 38px -7px hsl(345 80% 78% / 0.38), 0 14px 48px -14px hsl(345 80% 78% / 0.22), 0 4px 13px -4px hsl(345 80% 78% / 0.14);
+    --shadow-champagne-glow: 0 6px 32px -6px hsl(45 70% 85% / 0.3), 0 12px 42px -12px hsl(45 70% 85% / 0.18), 0 3px 11px -3px hsl(45 70% 85% / 0.12);
+    --shadow-mauve-mystique: 0 8px 40px -8px hsl(320 50% 82% / 0.35), 0 15px 50px -15px hsl(320 50% 82% / 0.2), 0 4px 14px -4px hsl(320 50% 82% / 0.13);
+
+    /* Sophisticated Typography */
+    --font-romantic-serif: 'Cormorant Garamond', 'Playfair Display', serif;
+    --font-elegant-serif: 'Crimson Text', 'Libre Baskerville', serif;
+    --font-script: 'Dancing Script', cursive;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Enhanced Typography Scale with Fluid Sizing */
+    --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+    --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+    --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    --font-size-3xl: clamp(2rem, 1.7rem + 1.5vw, 3rem);
+    --font-size-4xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+
+    /* Romantic Font Combinations */
+    --font-romantic-heading: 'Playfair Display', 'Cormorant Garamond', serif;
+    --font-romantic-body: 'Inter', 'Crimson Text', sans-serif;
+    --font-romantic-accent: 'Dancing Script', 'Great Vibes', cursive;
+    --font-romantic-elegant: 'Libre Baskerville', 'Crimson Text', serif;
+
+    /* Enhanced animations */
+    --transition-3d: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.3s ease-out;
+    --transition-romantic: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-elegant: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+    /* Enhanced Color Grading Studio Colors */
+    --color-grading-primary: 340 85% 68%;
+    --color-grading-secondary: 25 80% 78%;
+    --color-grading-accent: 285 55% 78%;
+    --color-grading-neutral: 320 30% 95%;
+    --color-grading-dark: 340 15% 8%;
+
+    /* Professional Color Grading Gradients */
+    --gradient-color-grading: linear-gradient(135deg, hsl(340 85% 68%) 0%, hsl(285 55% 78%) 50%, hsl(25 80% 78%) 100%);
+    --gradient-professional: linear-gradient(135deg, hsl(220 25% 15%) 0%, hsl(220 25% 25%) 100%);
+    --gradient-warm-tone: linear-gradient(135deg, hsl(25 80% 78%) 0%, hsl(340 85% 68%) 100%);
+    --gradient-cool-tone: linear-gradient(135deg, hsl(200 70% 75%) 0%, hsl(285 55% 78%) 100%);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-3d-background text-foreground;
+    font-family: var(--font-body);
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-image:
+      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><style>.petal{fill:%23ff69b4;opacity:0.12;}</style></defs><circle class="petal" cx="20" cy="30" r="3"/><circle class="petal" cx="80" cy="20" r="2"/><circle class="petal" cx="60" cy="70" r="2.5"/><circle class="petal" cx="30" cy="80" r="2"/><circle class="petal" cx="90" cy="60" r="1.5"/><path class="petal" d="M15,15 Q20,10 25,15 Q20,20 15,15"/><path class="petal" d="M75,85 Q80,80 85,85 Q80,90 75,85"/><circle class="petal" cx="45" cy="15" r="1.5"/><circle class="petal" cx="25" cy="55" r="2"/></svg>'),
+      var(--gradient-3d-background);
+    font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+
+  /* Sophisticated Typography Classes */
+  .font-romantic {
+    font-family: var(--font-romantic-serif);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .font-elegant {
+    font-family: var(--font-elegant-serif);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .font-accent {
+    font-family: var(--font-romantic-serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .text-romantic {
+    background: linear-gradient(135deg, hsl(340 85% 68%), hsl(285 55% 78%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-elegant {
+    color: hsl(340 15% 8%);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  .text-script {
+    background: linear-gradient(135deg, hsl(345 80% 72%), hsl(25 80% 78%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Enhanced Typography Classes with Fluid Scaling */
+  .text-romantic-fluid {
+    font-size: var(--font-size-base);
+    line-height: clamp(1.4, 1.3 + 0.2vw, 1.6);
+    letter-spacing: clamp(-0.01em, -0.005em + 0.005vw, 0.01em);
+  }
+
+  .heading-romantic-fluid {
+    font-size: var(--font-size-3xl);
+    line-height: clamp(1.1, 1.05 + 0.1vw, 1.2);
+    letter-spacing: clamp(-0.02em, -0.015em + 0.005vw, -0.01em);
+  }
+
+  .text-romantic-gradient {
+    background: var(--gradient-sunset-romance);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+  }
+
+  .text-elegant-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 2px rgba(255,255,255,0.8);
+    color: hsl(340 15% 15%);
+  }
+
+  .text-script-romantic {
+    font-family: var(--font-romantic-accent);
+    background: var(--gradient-aurora-dreams);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-dreamy-glow {
+    background: var(--gradient-dreamy-mist);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
+  }
+
+  .text-pearl-elegant {
+    color: hsl(340 15% 8%);
+    text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 2px 6px rgba(0,0,0,0.05);
+    font-family: var(--font-romantic-elegant);
+  }
+}
+
+@layer components {
+  /* Background image classes */
+  .bg-hero-background {
+    background-image: url('/src/assets/hero-background.jpg');
+  }
+
+  .bg-cherry-tulip {
+    background-image: url('/src/assets/cherry-tulip-background.jpg');
+  }
+
+  .bg-sakura-tulip {
+    background-image: url('/src/assets/sakura-tulip-pattern.jpg');
+  }
+
+  .bg-floral-texture {
+    background-image: url('/src/assets/floral-texture-light.jpg');
+  }
+
+  /* Color Grading Studio Components */
+  .color-grading-studio {
+    @apply bg-gradient-to-br from-background via-muted/20 to-background;
+  }
+
+  .slider-romantic {
+    @apply relative;
+  }
+
+  .slider-romantic [data-orientation="horizontal"] {
+    @apply bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 rounded-full;
+  }
+
+  .slider-romantic [role="slider"] {
+    @apply bg-gradient-3d-primary border-2 border-white shadow-3d-soft hover:shadow-3d-medium transition-all duration-200;
+  }
+
+  .slider-romantic [role="slider"]:hover {
+    @apply scale-110;
+  }
+
+  .slider-romantic [role="slider"]:focus {
+    @apply ring-2 ring-primary/50 ring-offset-2;
+  }
+
+  /* Professional Color Grading Cards */
+  .card-color-grading {
+    @apply bg-gradient-to-br from-card via-card/95 to-muted/10 border border-border/50 rounded-lg shadow-3d-soft backdrop-blur-sm;
+  }
+
+  .card-color-grading:hover {
+    @apply shadow-3d-medium border-primary/30 transition-all duration-300;
+  }
+
+  /* Color Wheel Styles */
+  .color-wheel-container {
+    @apply relative rounded-full overflow-hidden shadow-3d-soft border-2 border-border/30;
+  }
+
+  .color-wheel-indicator {
+    @apply absolute w-4 h-4 border-2 border-white rounded-full shadow-lg pointer-events-none;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Bezier Curve Editor */
+  .curve-editor-grid {
+    @apply stroke-muted-foreground/20;
+  }
+
+  .curve-editor-point {
+    @apply cursor-grab active:cursor-grabbing drop-shadow-md hover:scale-110 transition-transform;
+  }
+
+  .curve-editor-path {
+    @apply drop-shadow-sm;
+  }
+
+  /* Before/After Comparison */
+  .comparison-split-line {
+    @apply absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-col-resize z-10;
+  }
+
+  .comparison-handle {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform;
+  }
+
+  /* Professional Typography */
+  .text-professional {
+    @apply font-elegant text-foreground/90 leading-relaxed;
+  }
+
+  .text-technical {
+    @apply font-mono text-xs text-muted-foreground tracking-wide;
+  }
+
+  .text-metric {
+    @apply font-mono text-sm font-medium text-primary;
+  }
+
+  /* Enhanced cherry blossom and tulip backgrounds */
+  .bg-cherry-garden {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.4) 0%, transparent 60%),
+      radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.3) 0%, transparent 60%),
+      radial-gradient(circle at 60% 20%, rgba(255, 105, 180, 0.3) 0%, transparent 60%),
+      radial-gradient(circle at 40% 80%, rgba(221, 160, 221, 0.25) 0%, transparent 50%),
+      var(--gradient-3d-background);
+  }
+
+  .bg-romantic-sunset {
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255, 154, 162, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(254, 207, 239, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255, 206, 84, 0.2) 0%, transparent 70%),
+      var(--gradient-sunset);
+  }
+
+  .bg-dreamy-aurora {
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(187, 134, 252, 0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(251, 113, 133, 0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 50%, rgba(252, 211, 77, 0.15) 0%, transparent 70%),
+      var(--gradient-aurora);
+  }
+
+  .bg-romantic-pearl {
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(255, 245, 238, 0.6) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 228, 225, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 50% 10%, rgba(255, 239, 213, 0.3) 0%, transparent 40%),
+      var(--gradient-pearl);
+  }
+
+  .bg-romantic-mauve {
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(221, 160, 221, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.25) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(230, 190, 255, 0.2) 0%, transparent 60%),
+      var(--gradient-mauve);
+  }
+
+  .bg-romantic-champagne {
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(255, 248, 220, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 85% 85%, rgba(255, 228, 181, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255, 239, 213, 0.25) 0%, transparent 60%),
+      var(--gradient-champagne);
+  }
+  
+  .bg-tulip-field {
+    background-image: 
+      linear-gradient(45deg, rgba(255, 215, 0, 0.1) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 105, 180, 0.1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 215, 0, 0.1) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 105, 180, 0.1) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  }
+  
+  .bg-floral-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 182, 193, 0.15) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.15) 1px, transparent 1px),
+      radial-gradient(circle at 50% 10%, rgba(255, 105, 180, 0.1) 1.5px, transparent 1.5px),
+      radial-gradient(circle at 10% 90%, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px, 40px 40px, 60px 60px;
+  }
+
+  /* Enhanced 3D backgrounds with floral themes */
+  .bg-3d-primary {
+    background: var(--gradient-3d-primary);
+    box-shadow: var(--shadow-inset);
+  }
+  
+  .bg-3d-secondary {
+    background: var(--gradient-3d-secondary);
+    box-shadow: var(--shadow-inset);
+  }
+  
+  .bg-3d-romantic {
+    background: var(--gradient-romantic-3d);
+    box-shadow: var(--shadow-inset);
+  }
+
+  /* Enhanced cherry blossom floating animation */
+  .sakura-petal {
+    position: absolute;
+    background: var(--gradient-3d-primary);
+    border-radius: 50% 0 50% 0;
+    opacity: 0.8;
+    box-shadow: var(--shadow-3d-soft);
+    animation: float-3d 6s ease-in-out infinite;
+  }
+  
+  /* Add tulip petal shapes */
+  .tulip-petal {
+    position: absolute;
+    background: var(--gradient-3d-secondary);
+    border-radius: 50% 50% 50% 0;
+    opacity: 0.7;
+    box-shadow: var(--shadow-3d-soft);
+    animation: tulip-float 8s ease-in-out infinite;
+  }
+  
+  /* Optimized floating animations */
+  @keyframes float-3d {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1); 
+      opacity: 0.6;
+    }
+    50% { 
+      transform: translateY(-15px) rotate(180deg) scale(1.05); 
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes tulip-float {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1); 
+      opacity: 0.5;
+    }
+    33% { 
+      transform: translateY(-10px) rotate(120deg) scale(1.03); 
+      opacity: 0.7;
+    }
+    66% { 
+      transform: translateY(-5px) rotate(240deg) scale(0.97); 
+      opacity: 0.6;
+    }
+  }
+  
+  @keyframes sakura-fall-3d {
+    0% {
+      transform: translateY(-100px) rotate(0deg) scale(0.8);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg) scale(0.6);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes tulip-fall {
+    0% {
+      transform: translateY(-100px) rotate(0deg) scale(0.7);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(-360deg) scale(0.5);
+      opacity: 0;
+    }
+  }
+  
+  .falling-sakura {
+    position: fixed;
+    top: -10px;
+    background: var(--gradient-3d-primary);
+    border-radius: 50% 0 50% 0;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: var(--shadow-3d-soft);
+    animation: sakura-fall-3d 10s linear infinite;
+  }
+  
+  
+  /* Mobile-optimized floating animations */
+  .animate-float-slow {
+    animation: float-slow 12s ease-in-out infinite;
+  }
+  
+  .animate-float-medium {
+    animation: float-medium 10s ease-in-out infinite;
+  }
+  
+  .animate-float-fast {
+    animation: float-fast 8s ease-in-out infinite;
+  }
+  
+  /* Enhanced mobile-optimized keyframes */
+  @keyframes float-slow {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+      opacity: 0.4;
+    }
+    50% { 
+      transform: translateY(-15px) rotate(180deg); 
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes float-medium {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+      opacity: 0.3;
+    }
+    50% { 
+      transform: translateY(-20px) rotate(120deg); 
+      opacity: 0.6;
+    }
+  }
+  
+  @keyframes float-fast {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+      opacity: 0.5;
+    }
+    50% { 
+      transform: translateY(-10px) rotate(240deg); 
+      opacity: 0.8;
+    }
+  }
+
+  
+  /* Enhanced Card Animation Classes */
+  .card-glow {
+    box-shadow: 0 0 30px rgba(var(--primary-rgb), 0.3), 0 0 60px rgba(var(--primary-rgb), 0.1);
+  }
+  
+  .card-hover-glow:hover {
+    box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.4), 0 0 80px rgba(var(--primary-rgb), 0.2);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+  
+  .pulse-heart {
+    animation: pulse-heart 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-heart {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  .bounce-gentle {
+    animation: bounce-gentle 3s ease-in-out infinite;
+  }
+  
+  @keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  .rotate-slow {
+    animation: rotate-slow 8s linear infinite;
+  }
+  
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* New Romantic Animations */
+  .romantic-glow {
+    animation: romantic-glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes romantic-glow {
+    0% {
+      box-shadow: var(--shadow-3d-soft);
+      transform: scale(1);
+    }
+    100% {
+      box-shadow: var(--shadow-romantic-glow);
+      transform: scale(1.02);
+    }
+  }
+
+  .love-pulse {
+    animation: love-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes love-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
+  .dreamy-float {
+    animation: dreamy-float 6s ease-in-out infinite;
+  }
+
+  @keyframes dreamy-float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.8;
+    }
+    33% {
+      transform: translateY(-10px) rotate(2deg);
+      opacity: 1;
+    }
+    66% {
+      transform: translateY(-5px) rotate(-1deg);
+      opacity: 0.9;
+    }
+  }
+
+  /* Sophisticated Romantic Animations */
+  .elegant-fade-in {
+    animation: elegant-fade-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes elegant-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .romantic-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .romantic-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 2.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  .gentle-bounce {
+    animation: gentle-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes gentle-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .romantic-breathe {
+    animation: romantic-breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes romantic-breathe {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+
+  .elegant-slide-up {
+    animation: elegant-slide-up 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes elegant-slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .falling-tulip {
+    position: fixed;
+    top: -10px;
+    background: var(--gradient-3d-secondary);
+    border-radius: 50% 50% 50% 0;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: var(--shadow-3d-soft);
+    animation: tulip-fall 12s linear infinite;
+  }
+
+  /* Enhanced 3D romantic button variants */
+  .btn-romantic-3d {
+    background: var(--gradient-3d-primary);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-3d-medium), var(--shadow-inset);
+    transition: var(--transition-3d);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-romantic-sunset {
+    background: var(--gradient-sunset);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-sunset), var(--shadow-inset);
+    transition: var(--transition-3d);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-romantic-dreamy {
+    background: var(--gradient-dreamy);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-dreamy), var(--shadow-inset);
+    transition: var(--transition-3d);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Sophisticated Button Variants */
+  .btn-elegant-pearl {
+    background: var(--gradient-pearl);
+    color: hsl(340 15% 8%);
+    font-family: var(--font-elegant-serif);
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 60px;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: var(--shadow-pearl), var(--shadow-inset);
+    transition: var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+  }
+
+  .btn-elegant-pearl:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-3d-medium), var(--shadow-inset);
+  }
+
+  .btn-romantic-mauve {
+    background: var(--gradient-mauve);
+    color: white;
+    font-family: var(--font-romantic-serif);
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 60px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: var(--shadow-mauve), var(--shadow-inset);
+    transition: var(--transition-romantic);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+  }
+
+  .btn-romantic-mauve:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-3d-strong), var(--shadow-inset);
+  }
+
+  .btn-script-elegant {
+    background: var(--gradient-champagne);
+    color: hsl(340 15% 8%);
+    font-family: var(--font-script);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.7);
+    box-shadow: var(--shadow-3d-soft), var(--shadow-inset);
+    transition: var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-script-elegant:hover {
+    transform: translateY(-4px) rotate(1deg);
+    box-shadow: var(--shadow-3d-medium), var(--shadow-inset);
+  }
+
+  /* Enhanced New Button Variants */
+  .btn-aurora-dreams {
+    background: var(--gradient-aurora-dreams);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-aurora-dreams), var(--shadow-inset);
+    transition: var(--transition-romantic);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+  }
+
+  .btn-aurora-dreams:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-3d-strong), var(--shadow-aurora-dreams);
+  }
+
+  .btn-garden-whispers {
+    background: var(--gradient-garden-whispers);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-garden-whispers), var(--shadow-inset);
+    transition: var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+  }
+
+  .btn-garden-whispers:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-3d-medium), var(--shadow-garden-whispers);
+  }
+
+  .btn-romantic-blush {
+    background: var(--gradient-romantic-blush);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-romantic-blush), var(--shadow-inset);
+    transition: var(--transition-romantic);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+  }
+
+  .btn-romantic-blush:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: var(--shadow-3d-strong), var(--shadow-romantic-blush);
+  }
+
+  .btn-dreamy-mist {
+    background: var(--gradient-dreamy-mist);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-dreamy-mist), var(--shadow-inset);
+    transition: var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+  }
+
+  .btn-dreamy-mist:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-3d-strong), var(--shadow-dreamy-mist);
+  }
+  
+  @media (min-width: 640px) {
+    .btn-romantic-3d {
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+    }
+  }
+  
+  .btn-romantic-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-romantic-3d:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-3d-strong), var(--shadow-glow-3d);
+  }
+  
+  .btn-romantic-3d:hover::before {
+    left: 100%;
+  }
+  
+  .btn-romantic-outline-3d {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    color: hsl(var(--primary));
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    border: 2px solid hsl(var(--primary));
+    box-shadow: var(--shadow-3d-soft);
+    transition: var(--transition-3d);
+  }
+  
+  @media (min-width: 640px) {
+    .btn-romantic-outline-3d {
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+    }
+  }
+  
+  .btn-romantic-outline-3d:hover {
+    background: var(--gradient-3d-primary);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-3d-medium);
+  }
+
+  /* Enhanced glass morphism with 3D effect */
+  .glass-romantic-3d {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-3d-medium), var(--shadow-inset);
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .glass-romantic-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-depth);
+    border-radius: 20px;
+    z-index: -1;
+  }
+  
+  /* Enhanced text gradients with better contrast */
+  .text-gradient-romantic-3d {
+    background: var(--gradient-romantic-3d);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Enhanced card hover effects with 3D */
+  .card-romantic-3d {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    padding: 1.75rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-3d-soft);
+    transition: var(--transition-3d);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-romantic-sunset {
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    padding: 1.75rem;
+    border: 1px solid rgba(255, 154, 162, 0.3);
+    box-shadow: var(--shadow-sunset);
+    transition: var(--transition-3d);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-romantic-dreamy {
+    background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 100%);
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    padding: 1.75rem;
+    border: 1px solid rgba(187, 134, 252, 0.3);
+    box-shadow: var(--shadow-dreamy);
+    transition: var(--transition-3d);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Sophisticated Card Variants */
+  .card-elegant-pearl {
+    background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%);
+    backdrop-filter: blur(30px);
+    border-radius: 28px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: var(--shadow-pearl);
+    transition: var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-elegant-pearl:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-3d-medium);
+    border-color: rgba(255,255,255,0.8);
+  }
+
+  .card-romantic-mauve {
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%);
+    backdrop-filter: blur(28px);
+    border-radius: 26px;
+    padding: 2rem;
+    border: 1px solid rgba(221, 160, 221, 0.4);
+    box-shadow: var(--shadow-mauve);
+    transition: var(--transition-romantic);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-romantic-mauve:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: var(--shadow-3d-strong);
+    border-color: rgba(221, 160, 221, 0.6);
+  }
+
+  .card-champagne-elegant {
+    background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.25) 100%);
+    backdrop-filter: blur(32px);
+    border-radius: 30px;
+    padding: 2.25rem;
+    border: 1px solid rgba(255, 248, 220, 0.5);
+    box-shadow: var(--shadow-3d-soft);
+    transition: var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-champagne-elegant:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-3d-medium);
+    border-color: rgba(255, 248, 220, 0.7);
+  }
+
+  .card-glass-romantic {
+    background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+    backdrop-filter: blur(35px);
+    border-radius: 32px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: var(--shadow-3d-soft);
+    transition: var(--transition-romantic);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-glass-romantic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+    border-radius: 32px;
+    pointer-events: none;
+  }
+
+  .card-glass-romantic:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-romantic-glow);
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  /* Enhanced New Card Variants */
+  .card-aurora-dreams {
+    background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 100%);
+    backdrop-filter: blur(28px);
+    border-radius: 26px;
+    padding: 2rem;
+    border: 1px solid rgba(187, 134, 252, 0.3);
+    box-shadow: var(--shadow-aurora-dreams);
+    transition: var(--transition-romantic);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-aurora-dreams:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-3d-strong);
+    border-color: rgba(187, 134, 252, 0.5);
+  }
+
+  .card-garden-whispers {
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    padding: 1.75rem;
+    border: 1px solid rgba(129, 199, 132, 0.3);
+    box-shadow: var(--shadow-garden-whispers);
+    transition: var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-garden-whispers:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-3d-medium);
+    border-color: rgba(129, 199, 132, 0.5);
+  }
+
+  .card-romantic-blush {
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%);
+    backdrop-filter: blur(30px);
+    border-radius: 28px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    box-shadow: var(--shadow-romantic-blush);
+    transition: var(--transition-romantic);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-romantic-blush:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-3d-strong);
+    border-color: rgba(255, 182, 193, 0.6);
+  }
+
+  .card-dreamy-mist {
+    background: linear-gradient(135deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.25) 100%);
+    backdrop-filter: blur(32px);
+    border-radius: 30px;
+    padding: 2.25rem;
+    border: 1px solid rgba(221, 160, 221, 0.4);
+    box-shadow: var(--shadow-dreamy-mist);
+    transition: var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-dreamy-mist:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-3d-strong);
+    border-color: rgba(221, 160, 221, 0.6);
+  }
+
+  /* Enhanced Input Styling */
+  .input-romantic {
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.7) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 16px 20px;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    min-height: 48px;
+  }
+
+  .input-romantic:focus {
+    outline: none;
+    border-color: hsl(345 85% 70%);
+    box-shadow:
+      0 0 0 3px hsl(345 85% 70% / 0.2),
+      0 8px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .input-romantic::placeholder {
+    color: hsl(340 15% 50%);
+    font-style: italic;
+  }
+
+  /* Enhanced Input Variants */
+  .input-aurora-dreams {
+    background: linear-gradient(135deg,
+      rgba(187, 134, 252, 0.15) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(244, 143, 177, 0.15) 100%
+    );
+    border: 2px solid rgba(187, 134, 252, 0.3);
+  }
+
+  .input-aurora-dreams:focus {
+    border-color: hsl(285 70% 75%);
+    box-shadow:
+      0 0 0 3px hsl(285 70% 75% / 0.2),
+      0 8px 30px rgba(187, 134, 252, 0.2);
+  }
+
+  .input-sunset-romance {
+    background: linear-gradient(135deg,
+      rgba(255, 154, 162, 0.15) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 206, 84, 0.15) 100%
+    );
+    border: 2px solid rgba(255, 154, 162, 0.3);
+  }
+
+  .input-sunset-romance:focus {
+    border-color: hsl(345 85% 75%);
+    box-shadow:
+      0 0 0 3px hsl(345 85% 75% / 0.2),
+      0 8px 30px rgba(255, 154, 162, 0.2);
+  }
+
+  .input-garden-whispers {
+    background: linear-gradient(135deg,
+      rgba(129, 199, 132, 0.15) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(187, 134, 252, 0.1) 100%
+    );
+    border: 2px solid rgba(129, 199, 132, 0.3);
+  }
+
+  .input-garden-whispers:focus {
+    border-color: hsl(165 50% 75%);
+    box-shadow:
+      0 0 0 3px hsl(165 50% 75% / 0.2),
+      0 8px 30px rgba(129, 199, 132, 0.2);
+  }
+
+  .input-pearl-elegance {
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 245, 238, 0.9) 100%
+    );
+    border: 2px solid rgba(255, 245, 238, 0.5);
+  }
+
+  .input-pearl-elegance:focus {
+    border-color: hsl(30 30% 85%);
+    box-shadow:
+      0 0 0 3px hsl(30 30% 85% / 0.3),
+      0 8px 30px rgba(255, 245, 238, 0.3);
+  }
+
+  /* Floating Label Enhancement */
+  .input-group-romantic {
+    position: relative;
+  }
+
+  .input-label-floating {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, hsl(345 85% 70%), hsl(285 55% 78%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+  }
+
+  .input-romantic:focus + .input-label-floating,
+  .input-romantic:not(:placeholder-shown) + .input-label-floating {
+    top: -8px;
+    font-size: 12px;
+    background: hsl(345 85% 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Enhanced Animation Effects */
+  .sparkle-effect {
+    position: relative;
+    overflow: visible;
+  }
+
+  .sparkle-effect::before,
+  .sparkle-effect::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, hsl(345 85% 75%), transparent);
+    border-radius: 50%;
+    animation: sparkle-dance 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .sparkle-effect::before {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0s;
+  }
+
+  .sparkle-effect::after {
+    bottom: 25%;
+    left: 20%;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes sparkle-dance {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2) rotate(180deg);
+    }
+  }
+
+  .breathing-glow {
+    animation: breathing-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes breathing-glow {
+    0%, 100% {
+      box-shadow: var(--shadow-romantic-glow);
+    }
+    50% {
+      box-shadow: var(--shadow-3d-strong), var(--shadow-romantic-glow);
+      transform: scale(1.01);
+    }
+  }
+
+  /* Enhanced Floating Hearts Animation */
+  .floating-hearts {
+    position: relative;
+    overflow: visible;
+  }
+
+  .floating-hearts::before {
+    content: '💖';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 16px;
+    animation: float-heart 6s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  @keyframes float-heart {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.7;
+    }
+    25% {
+      transform: translateY(-15px) rotate(5deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-8px) rotate(-3deg);
+      opacity: 0.8;
+    }
+    75% {
+      transform: translateY(-20px) rotate(8deg);
+      opacity: 0.9;
+    }
+  }
+
+  /* Enhanced Sakura Petal Animation */
+  .sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .sakura-petal {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(45deg, hsl(345 80% 75%), hsl(15 75% 82%));
+    border-radius: 50% 0 50% 0;
+    animation: sakura-fall 15s linear infinite;
+    opacity: 0.8;
+    box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
+  }
+
+  @keyframes sakura-fall {
+    0% {
+      transform: translateY(-100px) rotate(0deg) scale(0.8);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      transform: translateY(50vh) rotate(180deg) scale(1.1);
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.4;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg) scale(0.6);
+      opacity: 0;
+    }
+  }
+
+  /* Shimmer Enhancement */
+  .enhanced-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .enhanced-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: enhanced-shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes enhanced-shimmer {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @media (min-width: 640px) {
+    .card-romantic-3d {
+      padding: 2rem;
+    }
+  }
+  
+  .card-romantic-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-depth);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+  
+  .card-romantic-3d:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-3d-strong);
+  }
+  
+  .card-romantic-3d:hover::before {
+    opacity: 1;
+  }
+
+  /* Enhanced navigation styles */
+  .nav-3d {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: var(--shadow-3d-medium);
+    border-radius: 50px;
+  }
+
+  /* Enhanced text visibility with better contrast */
+  .text-enhanced {
+    text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 2px 6px rgba(0,0,0,0.1);
+    font-weight: 500;
+    color: hsl(var(--foreground));
+  }
+  
+  .text-title-3d {
+    text-shadow: 0 2px 4px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.9);
+    font-weight: 700;
+    color: hsl(var(--foreground));
+  }
+  
+  /* Improved text on dark backgrounds */
+  .text-on-dark {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.3);
+    color: rgba(255,255,255,0.95);
+  }
+}
+
+@layer components {
+  /* Cherry blossom floating animation */
+  .sakura-petal {
+    position: absolute;
+    background: hsl(var(--primary));
+    border-radius: 50% 0 50% 0;
+    opacity: 0.7;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+      opacity: 0.7;
+    }
+    50% { 
+      transform: translateY(-20px) rotate(180deg); 
+      opacity: 1;
+    }
+  }
+  
+  @keyframes sakura-fall {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  .falling-sakura {
+    position: fixed;
+    top: -10px;
+    background: hsl(var(--primary));
+    border-radius: 50% 0 50% 0;
+    pointer-events: none;
+    z-index: 10;
+    animation: sakura-fall 8s linear infinite;
+  }
+
+  /* Romantic button variants */
+  .btn-romantic {
+    @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground;
+    @apply px-8 py-3 rounded-full font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:shadow-lg hover:scale-105;
+    @apply border border-primary/20;
+  }
+  
+  .btn-romantic-outline {
+    @apply border-2 border-primary bg-transparent text-primary;
+    @apply px-8 py-3 rounded-full font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-primary hover:text-primary-foreground hover:shadow-lg;
+  }
+
+  /* Glass morphism effect */
+  .glass-romantic {
+    @apply bg-white/20 backdrop-blur-md border border-white/30;
+    @apply shadow-lg rounded-xl;
+  }
+  
+  /* Text gradients */
+  .text-gradient-romantic {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  /* Card hover effects */
+  .card-romantic {
+    @apply bg-card rounded-xl p-6 shadow-sm border border-border/50;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:shadow-xl hover:-translate-y-1;
+  }
+}
+
+/* Mobile-Optimized CSS Animations */
+@layer utilities {
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+  
+  .animate-float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+  }
+  
+  .animate-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+  }
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+  
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(360deg); }
+  }
+  
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-180deg); }
+  }
+  
+  /* Enhanced mobile performance optimizations */
+  @media (max-width: 767px) {
+    .animate-float-slow,
+    .animate-float-medium,
+    .animate-float-fast {
+      animation-duration: 15s; /* Slower on mobile for better performance */
+      animation-timing-function: ease-in-out;
+    }
+
+    /* Reduce complex animations on mobile */
+    .complex-animation {
+      animation: none;
+      transform: none;
+    }
+
+    /* Enhanced touch targets */
+    .touch-target {
+      min-height: 48px;
+      min-width: 48px;
+      padding: 8px;
+    }
+
+    /* Mobile-specific button enhancements */
+    .btn-romantic-3d,
+    .btn-romantic-sunset,
+    .btn-romantic-dreamy {
+      min-height: 48px;
+      padding: 12px 20px;
+      font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Mobile card optimizations */
+    .card-romantic-3d,
+    .card-romantic-sunset,
+    .card-romantic-dreamy {
+      padding: 16px;
+      margin: 8px;
+    }
+
+    /* Mobile text optimizations */
+    .text-title-3d {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    /* Mobile navigation optimizations */
+    .nav-3d {
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+    }
+  }
+  
+  /* Enhanced touch-friendly hover states for mobile */
+  @media (hover: none) and (pointer: coarse) {
+    .hover-only {
+      display: none;
+    }
+
+    .mobile-friendly:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+
+    /* Mobile-specific touch feedback */
+    .mobile-touch-feedback:active {
+      transform: scale(0.95);
+      opacity: 0.8;
+      transition: all 0.1s ease-out;
+    }
+
+    /* Enhanced button touch feedback */
+    .btn-romantic-3d:active,
+    .btn-romantic-sunset:active,
+    .btn-romantic-dreamy:active {
+      transform: scale(0.96);
+      box-shadow: var(--shadow-3d-soft);
+    }
+
+    /* Card touch feedback */
+    .card-romantic-3d:active,
+    .card-romantic-sunset:active,
+    .card-romantic-dreamy:active {
+      transform: scale(0.98);
+    }
+  }
+  
+  /* Enhanced accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float-slow,
+    .animate-float-medium,
+    .animate-float-fast,
+    .pulse-heart,
+    .bounce-gentle,
+    .rotate-slow {
+      animation: none;
+      transform: none;
+    }
+    
+    /* Keep essential animations but reduce intensity */
+    .essential-animation {
+      animation-duration: 0.3s;
+      animation-iteration-count: 1;
+    }
+  }
+  
+  /* Enhanced mobile-first card animations */
+  .card-mobile-optimized {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+  
+  .card-mobile-optimized:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (min-width: 768px) {
+    .card-mobile-optimized:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  /* Mobile-optimized shimmer effect */
+  .mobile-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: mobile-shimmer 3s infinite;
+  }
+  
+  @keyframes mobile-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+  
+  /* Enhanced mobile touch feedback */
+  .mobile-touch-feedback {
+    transition: all 0.15s ease-out;
+  }
+  
+  .mobile-touch-feedback:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
