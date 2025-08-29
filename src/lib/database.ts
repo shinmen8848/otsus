@@ -1,18 +1,32 @@
-import { supabase } from './supabase';
-import type { 
-  Profile, 
-  Memory, 
-  Timeline, 
-  AnimeEntry, 
-  DramaEntry, 
-  FuturePlan, 
+import { supabase, isSupabaseConfigured } from './supabase';
+import type {
+  Profile,
+  Memory,
+  Timeline,
+  AnimeEntry,
+  DramaEntry,
+  FuturePlan,
   Note,
-  RelationshipData 
+  RelationshipData
 } from './supabase';
+
+// Helper function to check if Supabase is configured
+const checkSupabaseConfig = () => {
+  if (!isSupabaseConfigured) {
+    console.warn('Supabase is not configured. Database operations will return mock data.');
+    return false;
+  }
+  return true;
+};
 
 // Profile Services
 export const profileService = {
   async getProfiles() {
+    if (!checkSupabaseConfig()) {
+      // Return mock data for development
+      return [] as Profile[];
+    }
+    
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
@@ -23,6 +37,10 @@ export const profileService = {
   },
 
   async getProfileByName(name: string) {
+    if (!checkSupabaseConfig()) {
+      return null;
+    }
+    
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
@@ -34,6 +52,10 @@ export const profileService = {
   },
 
   async updateProfile(id: string, updates: Partial<Profile>) {
+    if (!checkSupabaseConfig()) {
+      return { id, ...updates } as Profile;
+    }
+    
     const { data, error } = await supabase
       .from('profiles')
       .update(updates)
@@ -49,6 +71,19 @@ export const profileService = {
 // Relationship Services
 export const relationshipService = {
   async getRelationshipData() {
+    if (!checkSupabaseConfig()) {
+      // Return mock data for development
+      return {
+        id: 'mock-id',
+        start_date: '2023-02-14',
+        milestones: [],
+        anniversary_dates: ['2023-02-14'],
+        custom_celebrations: [],
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      } as RelationshipData;
+    }
+    
     const { data, error } = await supabase
       .from('relationship_data')
       .select('*')
@@ -270,7 +305,7 @@ export const futurePlansService = {
     let query = supabase
       .from('future_plans')
       .select('*')
-      .order('target_date', { ascending: true, nullsLast: true });
+      .order('target_date', { ascending: true, nullsFirst: false });
     
     if (category && category !== 'all') {
       query = query.eq('category', category);

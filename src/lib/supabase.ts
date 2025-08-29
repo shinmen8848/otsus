@@ -1,14 +1,38 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Supabase configuration using environment variables
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables. Please check your .env file.');
+// Check if the environment variables are properly configured
+const isSupabaseConfigured =
+  supabaseUrl &&
+  supabaseAnonKey &&
+  supabaseUrl !== 'YOUR_SUPABASE_URL' &&
+  supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY' &&
+  supabaseUrl.startsWith('http');
+
+// Create a mock client for development when Supabase is not configured
+let supabase: SupabaseClient;
+
+if (isSupabaseConfigured) {
+  try {
+    supabase = createClient(supabaseUrl, supabaseAnonKey);
+  } catch (error) {
+    console.error('Failed to initialize Supabase client:', error);
+    console.warn('Using mock Supabase client. Database operations will not work.');
+    // Create a mock client with dummy URL for development
+    supabase = createClient('https://placeholder.supabase.co', 'placeholder-key');
+  }
+} else {
+  console.warn('Supabase environment variables not configured properly.');
+  console.warn('Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file.');
+  console.warn('Using mock Supabase client. Database operations will not work.');
+  // Create a mock client with dummy URL for development
+  supabase = createClient('https://placeholder.supabase.co', 'placeholder-key');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export { supabase, isSupabaseConfigured };
 
 // Database types
 export interface Profile {

@@ -1,5 +1,5 @@
 import { enhancedAIService, type ConversationContext, type AIMessage, type AIResponse } from './ai';
-import { supabase } from './supabase';
+import { supabase, isSupabaseConfigured } from './supabase';
 
 // Chat Service Components as per design document
 
@@ -104,6 +104,11 @@ export class MessageHandler {
     content: string,
     metadata?: Record<string, unknown>
   ): Promise<void> {
+    if (!isSupabaseConfigured) {
+      console.warn('Supabase not configured - message not stored to database');
+      return;
+    }
+    
     const { error } = await supabase
       .from('ai_messages')
       .insert({
@@ -122,6 +127,19 @@ export class MessageHandler {
 // Conversation Manager - Manages conversation lifecycle
 export class ConversationManager {
   static async getOrCreateConversation(sessionId: string, userId?: string): Promise<Conversation> {
+    if (!isSupabaseConfigured) {
+      // Return mock conversation for development
+      return {
+        id: `mock-${sessionId}`,
+        userId,
+        sessionId,
+        title: 'Mock Conversation',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        isActive: true
+      };
+    }
+    
     // Try to find existing conversation
     const { data: existing, error: fetchError } = await supabase
       .from('ai_conversations')
@@ -169,6 +187,11 @@ export class ConversationManager {
   }
 
   static async getConversationMessages(conversationId: string, limit: number = 50): Promise<ChatMessage[]> {
+    if (!isSupabaseConfigured) {
+      // Return empty array for development
+      return [];
+    }
+    
     const { data, error } = await supabase
       .from('ai_messages')
       .select('*')
