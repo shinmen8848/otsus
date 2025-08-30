@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 interface Petal {
   id: number;
@@ -10,39 +10,40 @@ interface Petal {
   color: string;
 }
 
+// Constants moved outside component to prevent recreation
+const PETAL_TYPES = ['sakura', 'tulip', 'heart', 'star'] as const;
+const PETAL_COLORS = [
+  'hsl(340 90% 70%)', // romantic pink
+  'hsl(45 95% 75%)', // warm yellow
+  'hsl(280 60% 80%)', // soft lavender
+  'hsl(350 85% 75%)', // rose
+  'hsl(15 80% 85%)', // peach
+];
+
+// Reduce petal count for better performance
+const PETAL_COUNT = 12;
+
 export const SakuraPetals = () => {
-  const [petals, setPetals] = useState<Petal[]>([]);
+  // Memoize petals generation to prevent recreation on every render
+  const petals = useMemo(() => {
+    const newPetals: Petal[] = [];
 
-  useEffect(() => {
-    const generatePetals = () => {
-      const newPetals: Petal[] = [];
-      const petalTypes = ['sakura', 'tulip', 'heart', 'star'] as const;
-      const colors = [
-        'hsl(340 90% 70%)', // romantic pink
-        'hsl(45 95% 75%)', // warm yellow
-        'hsl(280 60% 80%)', // soft lavender
-        'hsl(350 85% 75%)', // rose
-        'hsl(15 80% 85%)', // peach
-      ];
+    for (let i = 0; i < PETAL_COUNT; i++) {
+      newPetals.push({
+        id: i,
+        left: Math.random() * 100,
+        size: Math.random() * 8 + 6, // Slightly smaller for performance
+        duration: Math.random() * 4 + 10, // Longer duration, less frequent updates
+        delay: Math.random() * 15,
+        type: PETAL_TYPES[Math.floor(Math.random() * PETAL_TYPES.length)],
+        color: PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)],
+      });
+    }
+    return newPetals;
+  }, []); // Empty dependency array - generate once
 
-      for (let i = 0; i < 20; i++) {
-        newPetals.push({
-          id: i,
-          left: Math.random() * 100,
-          size: Math.random() * 10 + 6,
-          duration: Math.random() * 6 + 8,
-          delay: Math.random() * 12,
-          type: petalTypes[Math.floor(Math.random() * petalTypes.length)],
-          color: colors[Math.floor(Math.random() * colors.length)],
-        });
-      }
-      setPetals(newPetals);
-    };
-
-    generatePetals();
-  }, []);
-
-  const getPetalShape = (type: string) => {
+  // Memoize shape and animation functions to prevent recreation
+  const getPetalShape = useMemo(() => (type: string) => {
     switch (type) {
       case 'sakura':
         return 'rounded-full';
@@ -55,9 +56,9 @@ export const SakuraPetals = () => {
       default:
         return 'rounded-full';
     }
-  };
+  }, []);
 
-  const getPetalAnimation = (type: string) => {
+  const getPetalAnimation = useMemo(() => (type: string) => {
     switch (type) {
       case 'sakura':
         return 'sakura-fall-3d';
@@ -70,14 +71,22 @@ export const SakuraPetals = () => {
       default:
         return 'sakura-fall-3d';
     }
-  };
+  }, []);
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Don't render if user prefers reduced motion
+  if (prefersReducedMotion) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
       {petals.map((petal) => (
         <div
           key={petal.id}
-          className={`absolute ${getPetalShape(petal.type)} opacity-80 shadow-lg`}
+          className={`absolute ${getPetalShape(petal.type)} opacity-60 will-change-transform`}
           style={{
             left: `${petal.left}%`,
             width: `${petal.size}px`,
@@ -85,7 +94,8 @@ export const SakuraPetals = () => {
             backgroundColor: petal.color,
             animation: `${getPetalAnimation(petal.type)} ${petal.duration}s linear infinite`,
             animationDelay: `${petal.delay}s`,
-            boxShadow: `0 2px 8px ${petal.color}40, 0 4px 16px ${petal.color}20`,
+            // Simplified shadow for better performance
+            boxShadow: `0 2px 4px ${petal.color}30`,
           }}
         />
       ))}

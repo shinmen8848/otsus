@@ -1818,11 +1818,20 @@ All colors MUST be HSL.
   
   /* Enhanced mobile performance optimizations */
   @media (max-width: 767px) {
+    /* Disable heavy animations on mobile for better performance */
     .animate-float-slow,
     .animate-float-medium,
-    .animate-float-fast {
-      animation-duration: 15s; /* Slower on mobile for better performance */
-      animation-timing-function: ease-in-out;
+    .animate-float-fast,
+    .sakura-fall-3d,
+    .tulip-fall,
+    .romantic-glow,
+    .dreamy-float,
+    .love-pulse,
+    .romantic-shimmer,
+    .gentle-bounce,
+    .romantic-breathe {
+      animation: none !important;
+      transform: none !important;
     }
 
     /* Reduce complex animations on mobile */
